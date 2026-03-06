@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Terminal - Arquivo 27</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+background:black;
+color:#33ff33;
+font-family:monospace;
+padding:30px;
+overflow:hidden;
+}
+
+#terminal{
+height:70vh;
+overflow-y:auto;
+white-space:pre-wrap;
+}
+
+input{
+background:black;
+border:none;
+color:#33ff33;
+font-family:monospace;
+width:80%;
+outline:none;
+}
+
+.glitch{
+animation:glitch 0.2s infinite;
+}
+
+@keyframes glitch{
+0%{text-shadow:2px 0 red,-2px 0 blue;}
+50%{text-shadow:-2px 0 red,2px 0 blue;}
+100%{text-shadow:2px 0 red,-2px 0 blue;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<br>
+
+<span>> </span>
+<input type="text" id="cmd" autofocus>
+
+<script>
+
+const terminal=document.getElementById("terminal")
+const input=document.getElementById("cmd")
+
+function escrever(txt){
+terminal.innerHTML+=txt+"\n"
+terminal.scrollTop=terminal.scrollHeight
+}
+
+function iniciar(){
+
+escrever("SISTEMA RECUPERADO - ARQUIVO 27")
+escrever("Integridade: 63%")
+escrever("Digite 'help' para listar comandos.\n")
+
+}
+
+function glitch(){
+
+document.body.classList.add("glitch")
+
+setTimeout(()=>{
+document.body.classList.remove("glitch")
+},400)
+
+}
+
+function comando(cmd){
+
+cmd=cmd.toLowerCase().trim()
+
+if(cmd==="help"){
+
+escrever("\nCOMANDOS DISPONÍVEIS")
+escrever("help       listar comandos")
+escrever("listar     listar arquivos")
+escrever("abrir 01   abrir relatório")
+escrever("anexo      baixar evidência")
+escrever("observar   encerrar investigação\n")
+
+}
+
+else if(cmd==="listar"){
+
+escrever("\nARQUIVOS ENCONTRADOS")
+escrever("relatorio01.txt")
+escrever("relatorio02.txt")
+escrever("evidencia_27.zip (oculto)\n")
+
+}
+
+else if(cmd==="abrir 01"){
+
+escrever("\nRELATÓRIO 01")
+escrever("O cliente afirma estar sendo seguido.")
+escrever("Nenhum suspeito encontrado.")
+escrever("O padrão sempre termina no mesmo ponto.\n")
+
+}
+
+else if(cmd==="anexo"){
+
+escrever("\nAcessando anexo protegido...\n")
+
+setTimeout(()=>{
+window.location.href="assets/arquivo.zip"
+},1500)
+
+}
+
+else if(cmd==="observar"){
+
+glitch()
+
+escrever("\nVocê finalmente percebe.")
+escrever("O observado nunca esteve fora.")
+escrever("Encerrando sistema...\n")
+
+setTimeout(()=>{
+window.location.href="final.html"
+},3000)
+
+}
+
+else if(cmd==="clear"){
+
+terminal.innerHTML=""
+
+}
+
+else{
+
+glitch()
+escrever("\nCOMANDO NÃO RECONHECIDO\n")
+
+}
+
+}
+
+input.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+escrever("> "+input.value)
+
+comando(input.value)
+
+input.value=""
+
+}
+
+})
+
+iniciar()
+
+</script>
+
+</body>
+</html>
