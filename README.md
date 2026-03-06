@@ -1,6 +1,6 @@
 # 🌹 Arquivo Lirio
 
-> **"Decifra-me, ou te devoro."**
+---
 
 Uma experiência interativa de investigação inspirada em enigmas clássicos da internet.
 
